@@ -1,0 +1,27 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  simple:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+  detailed:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(module)s:%(lineno)d - %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG # 可根据需要调整，如 INFO、WARNING
+    formatter: detailed # 使用哪种格式
+    stream: ext://sys.stdout # 输出到标准输出
+
+loggers:
+  apiLogger: # 自定义 logger 名称
+    level: INFO
+    handlers: [console]
+    propagate: false # 避免日志传播到根 logger
+
+root:
+  level: WARNING # 根 logger 只输出 WARNING 及以上
+  handlers: [console]
