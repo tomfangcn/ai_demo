@@ -24,8 +24,10 @@ API_KEY = os.getenv("DS_API_KEY_PY")
 
 if API_KEY is None:
     raise ValueError("环境变量 OPENAI_API_KEY 未设置")
-
-client = OpenAI(api_key=API_KEY,base_url="https://api.deepseek.com")
+try:
+    client = OpenAI(api_key=API_KEY,base_url="https://api.deepseek.com")
+except Exception as e:
+    logger.critical(f"未预期的错误：{e}", exc_info=True)
 
 try:
     resp = client.chat.completions.create(
