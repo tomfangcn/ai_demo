@@ -3,7 +3,9 @@ from pathlib import Path
 import os
 import logging.config
 import yaml
+from dotenv import load_dotenv
 
+load_dotenv()
 # 获取当前脚本文件所在目录
 script_dir = Path(__file__).parent
 # 构建配置文件的绝对路径（假设配置文件与脚本在同一目录下）
