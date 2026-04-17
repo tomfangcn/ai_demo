@@ -12,3 +12,4 @@ wheels/
 .env
 .idea
 .milvus_db
+.DS_Store
